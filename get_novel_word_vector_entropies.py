@@ -15,12 +15,14 @@ def get_bert_embedding(word, tokenizer, model):
     with torch.no_grad():
         outputs = model(**inputs)
     # Take the mean of the token embeddings for the word (pooling)
-    return outputs.last_hidden_state.mean(dim=1).squeeze()
+    # return outputs.last_hidden_state.mean(dim=1).squeeze()
+    token_vecs = outputs.hidden_states[-2][0]
+    return torch.mean(token_vecs, dim=0)
 
 # Load the BERT tokenizer and model
 model_name = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModel.from_pretrained(model_name)
+model = AutoModel.from_pretrained(model_name, output_hidden_states = True)
 
 # Input and output file paths
 input_file = "novel_words_and_nonce.txt"  # Replace with the actual input file path
