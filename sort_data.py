@@ -1,6 +1,6 @@
 # Define input and output file names
-input_file = "output_cosine_distances.txt"
-output_file = "output_cosine_distances_sorted.txt"
+input_file = "output_word_entropy.txt"
+output_file = "output_word_entropy_sorted.txt"
 
 # Read the input file
 with open(input_file, "r") as infile:

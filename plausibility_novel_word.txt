@@ -1,4 +1,3 @@
-plausibility	novel_word
 4	lingerable
 3.5	happenable
 4.2	telephonable
